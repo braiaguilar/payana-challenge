@@ -1,10 +1,8 @@
 import React from 'react';
 
-function Question({ question, onAnswer, goNext, goBack, answer }) {
-  if (!question) return <div>Loading...</div>;
-
-  const handleSelect = (value) => {
-    onAnswer(question.id, value);
+function Question({ question, onAnswer, answer, goNext, goBack, showPrevious, showNext, showSubmit, onSubmit }) {
+  const handleOptionChange = (e) => {
+    onAnswer(question.id, Number(e.target.value));
   };
 
   return (
@@ -12,20 +10,21 @@ function Question({ question, onAnswer, goNext, goBack, answer }) {
       <h2>{question.texto}</h2>
       <div>
         {[1, 2, 3, 4, 5].map((value) => (
-          <button
-            key={value}
-            style={{
-              backgroundColor: answer === value ? 'lightblue' : 'white',
-            }}
-            onClick={() => handleSelect(value)}
-          >
+          <label key={value}>
+            <input
+              type="radio"
+              value={value}
+              checked={answer === value}
+              onChange={handleOptionChange}
+            />
             {value}
-          </button>
+          </label>
         ))}
       </div>
       <div>
-        <button onClick={goBack} disabled={!goBack}>Previous</button>
-        <button onClick={goNext}>Next</button>
+        {showPrevious && <button onClick={goBack}>Previous</button>}
+        {showNext && <button onClick={goNext}>Next</button>}
+        {showSubmit && <button onClick={onSubmit}>Submit</button>}
       </div>
     </div>
   );

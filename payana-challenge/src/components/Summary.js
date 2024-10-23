@@ -1,16 +1,17 @@
 import React from 'react';
 
-function Summary({ answers }) {
+function Summary({ answers, questions, onEdit }) {
   return (
     <div>
-      <h2>Your answers summary</h2>
+      <h2>Survey Summary</h2>
       <ul>
-        {Object.entries(answers).map(([id, value]) => (
-          <li key={id}>
-            Question {id}: {value} / 5
+        {questions.map((question) => (
+          <li key={question.id}>
+            <strong>{question.texto}:</strong> {answers[question.id]}
           </li>
         ))}
       </ul>
+      <button onClick={onEdit}>Edit</button>
     </div>
   );
 }
