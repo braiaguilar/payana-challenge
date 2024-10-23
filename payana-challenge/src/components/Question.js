@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button, Box, RadioGroup, FormControlLabel, Radio, Typography } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send'
 
 function Question({ question, onAnswer, answer, goNext, goBack, showPrevious, showNext, showSubmit, onSubmit }) {
   const handleOptionChange = (e) => {
@@ -6,27 +8,26 @@ function Question({ question, onAnswer, answer, goNext, goBack, showPrevious, sh
   };
 
   return (
-    <div>
-      <h2>{question.texto}</h2>
-      <div>
+    <Box sx={{ mt: 4 }}>
+      <Typography variant="h5" gutterBottom>
+        {question.texto}
+      </Typography>
+      <RadioGroup value={answer || ''} onChange={handleOptionChange} row>
         {[1, 2, 3, 4, 5].map((value) => (
-          <label key={value}>
-            <input
-              type="radio"
-              value={value}
-              checked={answer === value}
-              onChange={handleOptionChange}
-            />
-            {value}
-          </label>
+          <FormControlLabel
+            key={value}
+            value={value}
+            control={<Radio />}
+            label={value}
+          />
         ))}
-      </div>
-      <div>
-        {showPrevious && <button onClick={goBack}>Previous</button>}
-        {showNext && <button onClick={goNext}>Next</button>}
-        {showSubmit && <button onClick={onSubmit}>Submit</button>}
-      </div>
-    </div>
+      </RadioGroup>
+      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'space-between' }}>
+        {showPrevious && <Button variant="contained" onClick={goBack}>Previous</Button>}
+        {showNext && <Button variant="contained" onClick={goNext}>Next</Button>}
+        {showSubmit && <Button variant="contained" endIcon={<SendIcon />} color="primary" onClick={onSubmit}>Submit</Button>}
+      </Box>
+    </Box>
   );
 }
 

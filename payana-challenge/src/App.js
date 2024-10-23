@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container, LinearProgress, Box } from '@mui/material';
 import Question from './components/Question';
 import Summary from './components/Summary';
 import questionsData from './data/questions.json';
@@ -7,10 +8,10 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [isReviewing, setIsReviewing] = useState(false); // Nuevo estado para controlar si estamos editando
+  const [isReviewing, setIsReviewing] = useState(false);
 
   useEffect(() => {
-    setQuestions(questionsData.preguntas); // Cargar las preguntas desde JSON
+    setQuestions(questionsData.preguntas);
   }, []);
 
   const handleAnswer = (id, value) => {
@@ -33,12 +34,12 @@ function App() {
   };
 
   const handleSubmit = () => {
-    setIsReviewing(true); // Cambiar al estado de revisión (mostrar Summary)
+    setIsReviewing(true);
   };
 
   const handleEdit = () => {
-    setIsReviewing(false); // Volver al modo de edición de preguntas
-    setCurrentQuestionIndex(0); // Volver a la primera pregunta
+    setIsReviewing(false);
+    setCurrentQuestionIndex(0);
   };
 
   if (isReviewing) {
@@ -48,8 +49,13 @@ function App() {
   const currentQuestion = questions[currentQuestionIndex];
   const currentAnswer = answers[currentQuestion?.id];
 
+  const progress = (currentQuestionIndex + 1) / questions.length * 100;
+
   return (
-    <div className="App">
+    <Container maxWidth="sm">
+      <Box sx={{ mt: 4, mb: 2 }}>
+        <LinearProgress variant="determinate" value={progress} />
+      </Box>
       {currentQuestion && (
         <Question
           question={currentQuestion}
@@ -57,13 +63,13 @@ function App() {
           goNext={goNext}
           goBack={goBack}
           answer={currentAnswer}
-          showPrevious={currentQuestionIndex > 0} // Mostrar Previous sólo si no es la primera pregunta
-          showNext={currentAnswer !== undefined && currentQuestionIndex < questions.length - 1} // Mostrar Next si se respondió la pregunta y no es la última
-          showSubmit={currentAnswer !== undefined && currentQuestionIndex === questions.length - 1} // Mostrar Submit si es la última pregunta y está respondida
+          showPrevious={currentQuestionIndex > 0}
+          showNext={currentAnswer !== undefined && currentQuestionIndex < questions.length - 1}
+          showSubmit={currentAnswer !== undefined && currentQuestionIndex === questions.length - 1}
           onSubmit={handleSubmit}
         />
       )}
-    </div>
+    </Container>
   );
 }
 
