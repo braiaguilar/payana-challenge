@@ -17,11 +17,11 @@ function Summary({ answers, questions, onEdit }) {
         Your Answers
       </Typography>
       <List>
-        {questions.map((question) => (
-          <ListItem key={question.id}>
+        {questions.map(({ id, texto }) => (
+          <ListItem key={id}>
             <ListItemText
-              primary={question.texto}
-              secondary={`Your answer: ${answers[question.id]}`}
+              primary={texto}
+              secondary={`Your answer: ${answers[id]}`}
             />
           </ListItem>
         ))}
