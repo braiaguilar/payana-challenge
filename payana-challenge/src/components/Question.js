@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Box, RadioGroup, FormControlLabel, Radio, Typography } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send'
+import SendIcon from '@mui/icons-material/Send';
 
 function Question({ question, onAnswer, answer, goNext, goBack, showPrevious, showNext, showSubmit, onSubmit }) {
   const handleOptionChange = (e) => {
@@ -11,6 +11,9 @@ function Question({ question, onAnswer, answer, goNext, goBack, showPrevious, sh
     <Box sx={{ mt: 4 }}>
       <Typography variant="h5" gutterBottom>
         {question.texto}
+      </Typography>
+      <Typography variant="body2" color="textSecondary" gutterBottom>
+        (1 = {question.min}, 5 = {question.max})
       </Typography>
       <RadioGroup value={answer || ''} onChange={handleOptionChange} row>
         {[1, 2, 3, 4, 5].map((value) => (

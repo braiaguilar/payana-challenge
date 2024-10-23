@@ -2,23 +2,33 @@
     "preguntas": [
         {
             "id": 1,
-            "texto": "¿Cuán fácil fue pagar tus facturas?"
+            "texto": "¿Cuán fácil fue pagar tus facturas?",
+            "min": "Muy difícil",
+            "max": "Muy fácil"
         },
         {
             "id": 2,
-            "texto": "¿Qué te parece el costo por transacción?"
+            "texto": "¿Qué te parece el costo por transacción?",
+            "min": "Muy caro",
+            "max": "Muy barato"
         },
         {
             "id": 3,
-            "texto": "¿Qué te pareció el nuevo módulo de Cobros?"
+            "texto": "¿Qué te pareció el nuevo módulo de Cobros?",
+            "min": "Muy malo",
+            "max": "Excelente"
         },
         {
             "id": 4,
-            "texto": "¿Cuán fácil fue causar una factura?"
+            "texto": "¿Cuán fácil fue causar una factura?",
+            "min": "Muy difícil",
+            "max": "Muy fácil"
         },
         {
             "id": 5,
-            "texto": "¿Recomendarías Payana? 1 poco probable, 5 muy probable."
+            "texto": "¿Recomendarías Payana?",
+            "min": "Poco probable",
+            "max": "Muy probable"
         }
     ]
 }
