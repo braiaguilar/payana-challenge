@@ -4,7 +4,15 @@ import EditIcon from '@mui/icons-material/Edit';
 
 function Summary({ answers, questions, onEdit }) {
   return (
-    <Box sx={{ mt: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        mt: 4,
+      }}
+    >
       <Typography variant="h5" gutterBottom>
         Your Answers
       </Typography>
