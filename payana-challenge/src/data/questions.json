@@ -1,0 +1,24 @@
+{
+    "preguntas": [
+        {
+            "id": 1,
+            "texto": "¿Cuán fácil fue pagar tus facturas?"
+        },
+        {
+            "id": 2,
+            "texto": "¿Qué te parece el costo por transacción?"
+        },
+        {
+            "id": 3,
+            "texto": "¿Qué te pareció el nuevo módulo de Cobros?"
+        },
+        {
+            "id": 4,
+            "texto": "¿Cuán fácil fue causar una factura?"
+        },
+        {
+            "id": 5,
+            "texto": "¿Recomendarías Payana? 1 poco probable, 5 muy probable."
+        }
+    ]
+}
