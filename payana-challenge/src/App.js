@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, LinearProgress, Box } from '@mui/material';
 import QuestionContainer from './components/Question/QuestionContainer.js';
-import Summary from './components/Summary/Summary.js';
+import SummaryContainer from './components/Summary/SummaryContainer.js';
 import questionsData from './data/questions.json';
 
 function App() {
@@ -27,7 +27,13 @@ function App() {
   const currentAnswer = answers[currentQuestion?.id] ?? '';
 
   if (isReviewing) {
-    return <Summary answers={answers} onEdit={handleEdit} questions={questions} />;
+    return (
+      <SummaryContainer 
+        answers={answers} 
+        questions={questions} 
+        onEdit={handleEdit} 
+      />
+    );
   }
 
   return (
