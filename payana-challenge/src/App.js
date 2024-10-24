@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, LinearProgress, Box } from '@mui/material';
-import Question from './components/Question';
-import Summary from './components/Summary';
+import QuestionContainer from './components/Question/QuestionContainer.js';
+import Summary from './components/Summary/Summary.js';
 import questionsData from './data/questions.json';
 
 function App() {
@@ -36,16 +36,15 @@ function App() {
         <LinearProgress variant="determinate" value={((currentQuestionIndex + 1) / questions.length) * 100} />
       </Box>
       {currentQuestion && (
-        <Question
+        <QuestionContainer
           question={currentQuestion}
-          onAnswer={handleAnswer}
+          currentAnswer={currentAnswer}
+          currentQuestionIndex={currentQuestionIndex}
+          questionsLength={questions.length}
+          handleAnswer={handleAnswer}
           goNext={() => setCurrentQuestionIndex(prev => prev + 1)}
           goBack={() => setCurrentQuestionIndex(prev => prev - 1)}
-          answer={currentAnswer}
-          showPrevious={currentQuestionIndex > 0}
-          showNext={currentAnswer !== '' && currentQuestionIndex < questions.length - 1}
-          showSubmit={currentAnswer !== '' && currentQuestionIndex === questions.length - 1}
-          onSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       )}
     </Container>
